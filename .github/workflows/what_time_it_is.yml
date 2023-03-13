@@ -1,8 +1,9 @@
 name: date
-on: push
+on: [push]
 
 jobs:
   date:
+    uses: actions/checkout@v2
     runs-on: epitechcontent/epitest-docker
     steps:
     - name: print date
