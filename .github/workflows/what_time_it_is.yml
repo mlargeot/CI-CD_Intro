@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   date:
-    runs-on: epitechcontent/epitest-docker
+    runs-on: ubuntu-latest
     steps:
       uses: actions/checkout@v2
       - name: print date
