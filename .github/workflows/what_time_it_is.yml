@@ -1,4 +1,6 @@
-date:
-  on:
-    push:
-      run : date
+name: date
+  on: push
+
+jobs:
+  date:
+    run: date
