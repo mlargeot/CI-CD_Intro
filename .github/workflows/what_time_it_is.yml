@@ -3,4 +3,6 @@ name: date
 
 jobs:
   date:
-    run: date
+    steps:
+    - name: print date
+      run: date
