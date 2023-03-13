@@ -3,6 +3,7 @@ on: push
 
 jobs:
   date:
+    runs-on: epitechcontent/epitest-docker
     steps:
     - name: print date
       run: date
