@@ -1,3 +1,4 @@
-on:
-  push:
-    run : date
+date:
+  on:
+    push:
+      run : date
