@@ -1,5 +1,5 @@
 name: date
-  on: push
+on: push
 
 jobs:
   date:
