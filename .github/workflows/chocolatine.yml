@@ -1,0 +1,59 @@
+name: chocolatine
+on: 
+  push:
+    branches-ignore:
+      ga-ignore-
+  pull:
+    branches-ignore:
+      ga-ignore-
+
+env:
+  MIRROR_URL: git@github.com:EpitechPromo2027/B-DOP-200-REN-2-1-chocolatine-morgan.largeot.git
+  EXECUTABLES: 
+
+jobs:
+  check_coding_style:
+    runs-on: ubuntu-latest
+    container: ghcr.io/epitech/coding-style-checker:latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: check.sh $(pwd) $(pwd)
+
+
+  check_program_compilation:
+    needs: check_coding_style
+    runs-on: ubuntu_latest
+    container: epitechcontent/epitest-docker
+    steps:
+      - uses: actions/checkout@v3
+      - run: make
+        timeout-minutes: 2
+      - run: make clean
+      - run: |
+        for exec in $(echo "${{ env.EXECUTABLES }}" | tr ',' ' ')
+        do
+          if [ ! -f $exec ] || [ ! -x $exec ]
+          then; exit 1; fi
+
+  run_tests:
+    needs: check_program_compilation
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    container: epitechcontent/epitest-docker
+    steps:
+      run: make tests_run
+
+  push_to_mirror:
+    needs: run_tests
+    if: ${{ github.event_name == 'push' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
+            ${{ secrets.GIT_SSH_PRIVATE_KEY }}
