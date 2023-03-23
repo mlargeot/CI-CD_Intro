@@ -2,10 +2,10 @@ name: chocolatine
 on: 
   push:
     branches-ignore:
-      ga-ignore-
-  pull_request:
+      - ga-ignore-*
+  pull:
     branches-ignore:
-      ga-ignore-
+      - ga-ignore-*
 
 env:
   MIRROR_URL: git@github.com:EpitechPromo2027/B-DOP-200-REN-2-1-chocolatine-morgan.largeot.git
