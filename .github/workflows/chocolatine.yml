@@ -55,6 +55,7 @@ jobs:
     runs-on: ubuntu-latest
     container: epitechcontent/epitest-docker
     steps:
+      - uses: actions/checkout@v3
       - run: make tests_run
         timeout-minutes: 2
 
