@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: check.sh $(pwd) $(pwd)
       - run: |
-          if [ ! -s "coding-style-report.log" ]; then
+          if [ ! -s "coding-style-reports.log" ]; then
             echo ""
           else
             while read ERROR
@@ -29,7 +29,7 @@ jobs:
               $TYPE = "echo $ERROR | cut -d : -f 3"
               $ERR = "echo $ERROR | cut -d : -f 4"
               echo ::error file=$FILE,line=$LINE,title=$TYPE coding style error::$ERR 
-            done < "coding-style-report.log"
+            done < "coding-style-reports.log"
             exit 1
           fi
 
