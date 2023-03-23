@@ -24,8 +24,6 @@ all:	$(NAME)
 $(NAME):	$(OBJ) $(OBM)
 	gcc -o $(NAME) $(OBJ) $(OBM)
 
-tests_run:
-
 clean:
 	rm -f $(OBJ) $(OBM)
 
@@ -33,6 +31,8 @@ fclean:	clean
 	rm -f $(NAME)
 
 re: fclean all
+
+tests_run:
 
 .SILENT:
 
