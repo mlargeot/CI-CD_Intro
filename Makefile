@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-SRC	=    
+SRC	=
 
 MAIN	= main.c
 
