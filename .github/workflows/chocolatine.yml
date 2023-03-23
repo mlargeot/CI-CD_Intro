@@ -43,11 +43,11 @@ jobs:
         timeout-minutes: 2
       - run: make clean
       - run: |
-        for exec in $(echo "${{ env.EXECUTABLES }}" | tr ',' ' ')
-        do
-          if [ ! -f $exec ] || [ ! -x $exec ]
-          then; exit 1; fi
-        done
+          for exec in $(echo "${{ env.EXECUTABLES }}" | tr ',' ' ')
+          do
+            if [ ! -f $exec ] || [ ! -x $exec ]
+            then; exit 1; fi
+          done
 
   run_tests:
     needs: check_program_compilation
