@@ -7,11 +7,11 @@
 
 SRC	=
 
-MAIN	= src/main.c
+MAIN	= main.c
 
 INCLUDE	=
 
-NAME	=
+NAME	= test
 
 CFLAGS = $(INCLUDE:%=-I%) -g
 
