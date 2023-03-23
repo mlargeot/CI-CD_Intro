@@ -24,6 +24,8 @@ all:	$(NAME)
 $(NAME):	$(OBJ) $(OBM)
 	gcc -o $(NAME) $(OBJ) $(OBM)
 
+tests_run:
+
 clean:
 	rm -f $(OBJ) $(OBM)
 
