@@ -24,10 +24,10 @@ jobs:
           else
             while read ERROR
             do
-              $FILE = "echo $ERROR | cut -d : -f 1"
-              $LINE = "echo $ERROR | cut -d : -f 2"
-              $TYPE = "echo $ERROR | cut -d : -f 3"
-              $ERR = "echo $ERROR | cut -d : -f 4"
+              FILE=$("echo $ERROR | cut -d : -f 1")
+              LINE=$("echo $ERROR | cut -d : -f 2")
+              TYPE=$("echo $ERROR | cut -d : -f 3")
+              ERR=$("echo $ERROR | cut -d : -f 4")
               echo ::error file=$FILE,line=$LINE,title=$TYPE coding style error::$ERR 
             done < "coding-style-reports.log"
             exit 1
