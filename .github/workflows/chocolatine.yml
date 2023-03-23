@@ -45,8 +45,9 @@ jobs:
       - run: |
           for exec in $(echo "${{ env.EXECUTABLES }}" | tr ',' ' ')
           do
-            if [ ! -f $exec ] || [ ! -x $exec ]
-            then; exit 1; fi
+            if [ ! -f $exec ] || [ ! -x $exec ]; then
+              exit 1
+            fi
           done
 
   run_tests:
