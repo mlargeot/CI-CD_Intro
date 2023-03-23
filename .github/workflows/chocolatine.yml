@@ -9,7 +9,7 @@ on:
 
 env:
   MIRROR_URL: git@github.com:EpitechPromo2027/B-DOP-200-REN-2-1-chocolatine-morgan.largeot.git
-  EXECUTABLES: 
+  EXECUTABLES: test
 
 jobs:
   check_coding_style:
