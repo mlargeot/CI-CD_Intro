@@ -18,7 +18,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: check.sh $(pwd) $(pwd)
-
+      - run: |
+          if [ ! -s "coding-style-report.log"]
+            echo ""
+          else
+            while read ERROR
+            do
+              $FILE = "echo $ERROR | cut -d : -f 1"
+              $LINE = "echo $ERROR | cut -d : -f 2"
+              $TYPE = "echo $ERROR | cut -d : -f 3"
+              $ERR = "echo $ERROR | cut -d : -f 4"
+              echo ::error file=$FILE,line=$LINE,title=$TYPE coding style error::$ERR 
+            done < "coding-style-report.log"
+            exit 1
+          fi
 
   check_program_compilation:
     needs: check_coding_style
