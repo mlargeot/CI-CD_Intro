@@ -9,7 +9,7 @@ on:
 
 env:
   MIRROR_URL: git@github.com:EpitechPromo2027/B-DOP-200-REN-2-1-chocolatine-morgan.largeot.git
-  EXECUTABLES: test
+  EXECUTABLES: tests
 
 jobs:
   check_coding_style:
@@ -45,7 +45,12 @@ jobs:
       - run: |
           for exec in $(echo "${{ env.EXECUTABLES }}" | tr ',' ' ')
           do
-            if [ ! -f $exec ] || [ ! -x $exec ]; then
+            if [ ! -f $exec ]; then
+              echo "::error Inexistant file: $exec::"
+              exit 1
+            fi
+            if [ ! -x $exec ]; then
+              echo "::error Unable to execute: $exec::"
               exit 1
             fi
           done
