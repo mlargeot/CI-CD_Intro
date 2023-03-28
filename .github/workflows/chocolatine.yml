@@ -46,11 +46,11 @@ jobs:
           for exec in $(echo "${{ env.EXECUTABLES }}" | tr ',' ' ')
           do
             if [ ! -f $exec ]; then
-              echo "::error Inexistant file: $exec::"
+              echo "::error Inexistant file::$exec"
               exit 1
             fi
             if [ ! -x $exec ]; then
-              echo "::error Unable to execute: $exec::"
+              echo "::error Unable to execute::$exec"
               exit 1
             fi
           done
